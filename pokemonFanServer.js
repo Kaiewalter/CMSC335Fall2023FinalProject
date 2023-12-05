@@ -6,7 +6,7 @@ var portNumber;
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: path.resolve(__dirname, 'credentials/.env') }) 
 
-const uri = "mongodb+srv://instructor:project6@cluster0.cujvsvc.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://teamwork:<password>@cluster0.dddqwhd.mongodb.net/?retryWrites=true&w=majority"
 
 /* Our database and collection */
 const databaseAndCollection = {db: process.env.MONGO_DB_NAME, collection: process.env.MONGO_COLLECTION};
