@@ -2,11 +2,11 @@ const http = require("http");
 const path = require("path");
 const express = require("express"); /* Accessing express module */
 const app = express(); /* app is a request handler function */
-var portNumber;
+let portNumber = 5000;
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: path.resolve(__dirname, 'credentials/.env') }) 
 
-const uri = "mongodb+srv://teamwork:<password>@cluster0.dddqwhd.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://teamwork:cmsc335@cluster0.dddqwhd.mongodb.net/?retryWrites=true&w=majority"
 
 /* Our database and collection */
 const databaseAndCollection = {db: process.env.MONGO_DB_NAME, collection: process.env.MONGO_COLLECTION};
@@ -18,8 +18,8 @@ app.set("views", path.resolve(__dirname, "templates"));
 /* view/templating engine */
 app.set("view engine", "ejs");
 
-if (process.argv.length != 3) {
-    process.stdout.write(`Usage ${process.argv[1]} portNumber`);
+if (process.argv.length != 2) {
+    process.stdout.write(`Usage ${process.argv[1]}`);
     process.exit(1);
 }
 
@@ -29,7 +29,6 @@ app.get("/", (request, response) => {
   /* Generating the HTML using index template */
   response.render("index");
 });
-portNumber = process.argv[2];
 app.listen(portNumber);
 console.log(`Web server is running at http://localhost:${portNumber}`);
 
