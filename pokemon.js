@@ -27,10 +27,10 @@ app.get("/apply", (request, response) => {
 
 app.post("/apply", async (request, response) => {
   let {name, email, type, pokemon} = request.body;
+  let variables = {name: name, email: email, type: type, pokemon: pokemon};
   try {
       await client.connect();
-      let variables = {name: name, email: email, type: type, pokemon: pokemon};
-      await insertApplication(client, databaseAndCollection, individual);
+      await insertApplication(client, databaseAndCollection, variables);
   } catch (e) {
       console.error(e);
   } finally {
