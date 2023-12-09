@@ -16,6 +16,7 @@ const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
 process.stdin.setEncoding("utf8");
 
 // Middleware functions start here
+app.use( express.static( "public" ) );
 app.get("/", (request, response) => {
   response.render("index");
 });
