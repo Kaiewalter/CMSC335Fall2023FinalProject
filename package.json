@@ -1,0 +1,11 @@
+{
+  "name": "cmsc335fall2023finalproject",
+  "version": "1.0.0",
+  "description": "Repo for final project for CMSC335 Fall 2023",
+  "main": "pokemon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -61,11 +61,12 @@ app.get("/apply", (request, response) => {
 });
 
 app.use(bodyParser.urlencoded({extended:false}));
+
 app.post("/apply", async (request, response) => {
-    let {name, email, GPA, backgroundInformation} = request.body;
+    let {name, email, type} = request.body;
     try {
         await client.connect();
-        let individual = {name: name, emailAddress: email, GPA: GPA, backgroundInformation: backgroundInformation};
+        let individual = {name: name, emailAddress: email, type: type};
         await insertApplication(client, databaseAndCollection, individual);
     } catch (e) {
         console.error(e);
@@ -76,9 +77,7 @@ app.post("/apply", async (request, response) => {
     const variables = {
         name: name,
         email: email,
-        GPA: GPA,
-        backgroundInformation: backgroundInformation,
-        date: new Date()
+        type: type,
     }
     response.render("confirmation", variables);
 })
