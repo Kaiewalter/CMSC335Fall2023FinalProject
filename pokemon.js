@@ -44,7 +44,7 @@ async function insertApplication(client, databaseAndCollection, newApplication) 
 }
 
 app.get("/displayType", (request, response) => {
-  response.render("dsplayType");
+  response.render("displayType");
 });
 
 app.post("/displayType", async (request, response) => {
