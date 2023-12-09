@@ -39,6 +39,10 @@ app.post("/apply", async (request, response) => {
   response.render("confirmation", variables);
 })
 
+async function insertApplication(client, databaseAndCollection, newApplication) {
+  const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newApplication);
+}
+
 app.get("/displayType", (request, response) => {
   response.render("dsplayType");
 });
