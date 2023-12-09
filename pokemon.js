@@ -21,8 +21,40 @@ app.get("/", (request, response) => {
 });
 
 app.get("/apply", (request, response) => {
-    const variables = { port: portNumber };
-    response.render("application", variables);
+    response.render("application");
+});
+
+app.get("/displayType", (request, response) => {
+  response.render("dsplayType");
+});
+
+app.post("/displayType", async (request, response) => {
+  let target = request.body.type;
+  let table = "<table border='1'><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody></tbody>";
+  try {
+      await client.connect();
+      let filter = {type: {$e: target}};
+      const cursor = await client.db(databaseAndCollection.db)
+                      .collection(databaseAndCollection.collection)
+                      .find(filter);
+      const result = await cursor.toArray();
+      for (let i = 0; i < result.length; i++) {
+          table += '<tr><td>';
+          table += result[i]['name'];
+          table += '</td><td>'
+          table += result[i]['type'];
+          table += "</td>";
+      }
+      table += "</tbody></table><br>";
+  } catch (e) {
+      console.error(e);
+  } finally {
+      await client.close();
+  }
+  const variables = {
+      chart: table
+  }
+  response.render("gpaDisplay", variables);
 });
 
 // Add more middleware functions here
