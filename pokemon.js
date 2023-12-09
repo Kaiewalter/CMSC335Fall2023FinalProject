@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
 
 app.get("/", (request, response) => {
-  response.send("<h1>HERES THE FINAL PROJECT WEBPAGE (TADA)</h1>");
+  response.render("index");
 });
 app.listen(portNumber);
 console.log(`Web server is running at http://localhost:${portNumber}`);
