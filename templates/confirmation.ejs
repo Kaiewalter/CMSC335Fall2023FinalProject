@@ -10,11 +10,11 @@
 <body>
 	<h1>Join the Pokemon Fan Club</h1>
 	<p>
-        Thanks for joining [NAME]!
+        Thanks for joining <%- name %>!
         <br>You've been added to our roster and mailing list.
     </p>
-    <p>Here's some info on your favorite Pokemon <strong>[POKEMON]</strong></p>
-
+    <p>Here's some info on your favorite Pokemon <strong><%- pokemon %></strong></p>
+	<%- info ->
 	<hr>
 	<a href="/">HOME</a>
 </body>
