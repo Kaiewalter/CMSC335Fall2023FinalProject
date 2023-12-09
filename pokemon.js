@@ -25,6 +25,20 @@ app.get("/apply", (request, response) => {
     response.render("application");
 });
 
+app.post("/apply", async (request, response) => {
+  let {name, email, type, pokemon} = request.body;
+  try {
+      await client.connect();
+      let variables = {name: name, email: email, type: type, pokemon: pokemon};
+      await insertApplication(client, databaseAndCollection, individual);
+  } catch (e) {
+      console.error(e);
+  } finally {
+      await client.close();
+  }
+  response.render("confirmation", variables);
+})
+
 app.get("/displayType", (request, response) => {
   response.render("dsplayType");
 });
@@ -55,22 +69,8 @@ app.post("/displayType", async (request, response) => {
   const variables = {
       chart: table
   }
-  response.render("gpaDisplay", variables);
+  response.render("typeChart", variables);
 });
-
-app.post("/apply", async (request, response) => {
-    let {name, email, type, pokemon} = request.body;
-    try {
-        await client.connect();
-        let variables = {name: name, email: email, type: type, pokemon: pokemon};
-        await insertApplication(client, databaseAndCollection, individual);
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-    response.render("confirmation", variables);
-})
 
 // Add more middleware functions here
 
