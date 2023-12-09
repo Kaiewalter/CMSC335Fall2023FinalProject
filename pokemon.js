@@ -16,6 +16,7 @@ const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
 process.stdin.setEncoding("utf8");
 
 // Middleware functions start here
+app.use( express.static( "public" ) );
 app.get("/", (request, response) => {
   response.render("index");
 });
@@ -56,6 +57,20 @@ app.post("/displayType", async (request, response) => {
   }
   response.render("gpaDisplay", variables);
 });
+
+app.post("/apply", async (request, response) => {
+    let {name, email, type, pokemon} = request.body;
+    try {
+        await client.connect();
+        let variables = {name: name, email: email, type: type, pokemon: pokemon};
+        await insertApplication(client, databaseAndCollection, individual);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
+    response.render("confirmation", variables);
+})
 
 // Add more middleware functions here
 
