@@ -1,32 +1,20 @@
 const http = require("http");
 const path = require("path");
-const express = require("express"); /* Accessing express module */
-const app = express(); /* app is a request handler function */
+const express = require("express");
+const app = express();
 let portNumber = 5000;
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: path.resolve(__dirname, 'credentials/.env') }) 
 
 const uri = "mongodb+srv://teamwork:cmsc335@cluster0.dddqwhd.mongodb.net/?retryWrites=true&w=majority"
-
-/* Our database and collection */
 const databaseAndCollection = {db: process.env.MONGO_DB_NAME, collection: process.env.MONGO_COLLECTION};
 const { MongoClient, ServerApiVersion } = require('mongodb');
-
-/* directory where templates will reside */
 app.set("views", path.resolve(__dirname, "templates"));
-
-/* view/templating engine */
 app.set("view engine", "ejs");
-
-if (process.argv.length != 2) {
-    process.stdout.write(`Usage ${process.argv[1]}`);
-    process.exit(1);
-}
 
 const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
 
 app.get("/", (request, response) => {
-  /* Generating the HTML using index template */
   response.render("index");
 });
 app.listen(portNumber);
@@ -36,21 +24,6 @@ const prompt = "Stop to shutdown the server: ";
 process.stdout.write(prompt);
 
 process.stdin.setEncoding("utf8"); /* encoding */
-
-process.stdin.on('readable', () => {  /* on equivalent to addEventListener */
-let dataInput = process.stdin.read();
-if (dataInput !== null) {
-    let command = dataInput.trim();
-    if (command === "stop") {
-        process.stdout.write("Shutting down the server\n");
-        process.exit(0);
-    } else {
-        process.stdout.write("Invalid command: " + command + "\n");
-    }
-    process.stdout.write(prompt);
-    process.stdin.resume();
-    }
-});
 
 app.get("/apply", (request, response) => {
     /* Generating the HTML using index template */

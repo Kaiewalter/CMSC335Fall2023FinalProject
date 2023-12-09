@@ -1,0 +1,22 @@
+<!-- Just make this ejs when we need to -->
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Join Club Confirmation</title>
+</head>
+
+<body>
+	<h1>Join the Pokemon Fan Club</h1>
+	<p>
+        Thanks for joining <%- name %>!
+        <br>You've been added to our roster and mailing list.
+    </p>
+    <p>Here's some info on your favorite Pokemon <strong><%- pokemon %></strong></p>
+	<%- info ->
+	<hr>
+	<a href="/">HOME</a>
+</body>
+
+</html>

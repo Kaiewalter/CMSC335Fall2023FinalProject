@@ -1,11 +1,18 @@
 {
-  "name": "cmsc335fall2023finalproject",
+  "name": "summercamp",
   "version": "1.0.0",
-  "description": "Repo for final project for CMSC335 Fall 2023",
-  "main": "pokemon.js",
+  "description": "",
+  "main": "summerCampServer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "mongodb": "^6.3.0"
+  }
 }
