@@ -82,11 +82,27 @@ async function findType(type) {
 app.get("/displayFavorite", (request, response) => {
   response.render("displayFavorite");
 })
-app.post("/displayFavorite", (request, response) => {
+app.post("/displayFavorite", async (request, response) => {
   let pokemon = request.body.favorite;
-  let info = "HERE IS INFORMATION PLACEHOLDER";
-  const variables = {pokemon: pokemon, info: info};
-  response.render("pokemonInfo", variables);
+  let formattedPokemon = pokemon.toLowerCase()
+  let url = `https://pokeapi.co/api/v2/pokemon/${formattedPokemon}/`;
+  let info = "";
+  let result = await fetch(url);
+  if (result.status === 404) {
+    info += "Pokemon not found, please try again with a valid pokemon!";
+    const variables = {pokemon: pokemon, info: info};
+    response.render("pokemonInfo", variables);
+  } else {
+    let json = await result.json();
+    info += `ID: ${json.id}<br>`;
+    info += `Name: ${json.name}<br>`;
+    info += `Height: ${json.height}<br>`;
+    info += `Weight: ${json.weight}<br>`;
+    info += `Base Experience: ${json.base_experience}<br>`;
+    info += `Order: ${json.order}<br>`;  
+    const variables = {pokemon: pokemon, info: info};
+    response.render("pokemonInfo", variables);
+  }
 })
 
 
