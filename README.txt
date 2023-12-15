@@ -1,7 +1,7 @@
 1) Team Members
 - Kai Walter (kewalter, 117159981)
 - Jayden Andrews ()
-- Zachary Smith ()
+- Zachary Smith (zsmith19, 117212068)
 
 2) App Description
 Our application allows user to enter themselves within the Pokemon fan club finder application.
