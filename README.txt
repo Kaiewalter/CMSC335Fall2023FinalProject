@@ -1,6 +1,6 @@
 1) Team Members
 - Kai Walter (kewalter, 117159981)
-- Jayden Andrews ()
+- Jayden Andrews (jandre10, 117212006)
 - Zachary Smith (zsmith19, 117212068)
 
 2) App Description
