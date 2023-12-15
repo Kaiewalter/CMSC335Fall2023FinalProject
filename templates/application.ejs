@@ -3,20 +3,20 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Application</title>
+	<title>Join the Club!</title>
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 
 
 <body>
 	<div>
-		<h1>Join the Pokemon Fan Club</h1>
+		<h1>Join the Pokemon Fan Club!</h1>
 		<form method="post">
 			<fieldset>
-				<label><strong>Name </strong><input type="text" name="name"/></label><br><br>
-				<label><strong>Email Address </strong><input type="email" name="email"></label><br><br>
+				<label><strong>Name </strong><input type="text" name="name" required/></label><br><br>
+				<label><strong>Email Address </strong><input type="email" name="email" required></label><br><br>
 				<label><strong>Favorite Type </strong>
-					<select name="type">
+					<select name="type" required>
 						<option>Normal</option>
 						<option>Fire</option>
 						<option>Water</option>
@@ -36,7 +36,8 @@
 						<option>Steel</option>
 						<option>Fairy</option>
 					</select>
-				</label>
+				</label><br><br>
+				<label><strong>Favorite Pokemon </strong><input type="text" name="pokemon" required/></label>
 			</fieldset>
 
 			<br>
@@ -44,7 +45,7 @@
 			<button type="reset">Clear</button>
 		</form>
 		<hr>
-		<a href="/"><button type="button">HOME</button></a>
+		<a href="/"><button type="button">RETURN HOME</button></a>
 	</div>
 </body>
 
