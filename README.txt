@@ -5,11 +5,11 @@
 
 2) App Description
 Our application allows user to enter themselves within the Pokemon fan club finder application.
-From there they can then find others within the club who share a favorite Pokemon type.
-Finally, users can enter in their favorite pokemon to find out more about them.
+From there they can then find others within the club who share a favorite Pokemon type and/or favorite Pokemon.
+Finally, users can either manually enter in their favorite Pokemon or their email to find out more about their favorite Pokemon.
 
 3) API Links
 https://pokeapi.co/docs/v2#pokemon
 
 4) YouTube Demo Video
-INSERT LINK HERE
+https://www.youtube.com/watch?v=1Wt618-zm5k
