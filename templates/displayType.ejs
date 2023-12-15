@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Display Type</title>
+	<title>Find Others</title>
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 
@@ -11,10 +11,10 @@
 
 <body>
 	<div>
-		<h1>Display all users with the same favorite type</h1>
+		<h1>Display all users with the same favorite type or favorite pokemon!</h1>
 		<form method="post">
 			<fieldset>
-				<select name="type">
+				<label><strong>Favorite Type </strong><select name="type">
 					<option>Normal</option>
 					<option>Fire</option>
 					<option>Water</option>
@@ -33,15 +33,20 @@
 					<option>Dark</option>
 					<option>Steel</option>
 					<option>Fairy</option>
-				</select><br>
+				</select></label><br><br>
+				<label><strong>Favorite Pokemon </strong><input type="text" name="pokemon"/></label><br><br>
+				<label><strong>Sort By </strong><select name="filter" required>
+					<option>Type</option>
+					<option>Pokemon</option>
+					<option>Both</option>
+				</select></label><br>
 			</fieldset>
 			<br>
-			<button type="submit">Lookup Type</button>
+			<button type="submit">Lookup Fellow Club Members</button>
 		</form>
 		<hr>
-		<a href="/"><button type="button">HOME</button></a>
+		<a href="/"><button type="button">RETURN HOME</button></a>
 	</div>
 </body>
 
 </html>
-
